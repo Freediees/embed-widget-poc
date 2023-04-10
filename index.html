@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Embed Widget</title>
+        <script type="text/javascript"  src="http://code.jquery.com/jquery-latest.js"></script>
+        <script  type="text/javascript"  >
+            function loadExternalContent() {
+            jQuery('#content-container').load("http://localhost:3000", function () {
+                alert('External page loaded!');
+            });
+            setTimeout(()=>{ console.log('running')},1000)
+        }
+
+        // $.ajax({
+        //     url: "http://stackoverflow.com",
+        //     data: { uname: "test" },
+        //     type: "GET",
+        //     beforeSend: function(xhr){xhr.setRequestHeader('X-TOKEN', 'xxxxx');},
+        //     success: function() { alert('Success!' + authHeader); }
+        // });
+
+        $.ajax({
+            url: "http://localhost:3000",
+            data: { uname: "test" },
+            type: "GET",
+            headers:{ "X-TOKEN": 'xxxxx'},
+            success: function() { alert('Success!' + authHeader); }
+        });
+
+        
+        </script>
+
+
+    </head>
+
+    <body>
+        <div style="display: flex; flex-direction: row">
+            <!-- <script>$("#testDiv").load("http://microsoft.com");</script>
+            <div id="testDiv" style="width: 50%; height: 50%; background-color: aliceblue;"></div> -->
+
+            <!-- <link rel="import" href="http://localhost:3000">
+
+            <object data="http://localhost:3000" width="400" height="300" type="text/html">
+                Alternative Content
+            </object>
+
+            <embed src="http://localhost:3000" width=200 height=200 /> -->
+
+            <div id="login" style="width: 30%; height: 50vh"></div>
+            <div id="news" style="width: 30%; height: 50vh"></div>
+            <div id="disclaimer" style="width: 30%; height: 50vh"></div>
+            ​
+        </div>
+
+        <div id="ajaxLoader" style="width: 30%; height: 50vh; background-color: red;"></div>
+        
+
+    
+        <script>
+            $("#login").html('<object data="http://localhost:3000" style="height: 100%; width: 100%">');
+            $("#news").html('<object data="http://localhost:3000/news" style="height: 100%; width: 100%">');
+            $("#disclaimer").html('<object data="http://localhost:3000/disclaimer" style="height: 100%; width: 100%">');
+
+                $('#ajaxLoader').load('http://localhost:3000');
+          
+        </script>
+    </body>
+</html>
